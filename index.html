@@ -1,42 +1,506 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri Chaithanya | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sri Chaithanya | AI Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: Arial; margin:0; background:#0f172a; color:white; }
-    header { padding:20px; text-align:center; background:#1e293b; }
-    section { padding:40px; }
-    h2 { color:#38bdf8; }
-    .card { background:#1e293b; padding:20px; margin:10px 0; border-radius:10px; }
-    button { padding:10px 15px; background:#38bdf8; border:none; cursor:pointer; }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#020617;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      background:rgba(15,23,42,0.9);
+      backdrop-filter:blur(10px);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 8%;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav h2{
+      color:#38bdf8;
+      font-size:24px;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    nav ul li a:hover{
+      color:#38bdf8;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      flex-direction:column;
+      padding:0 20px;
+      background:linear-gradient(to bottom,#020617,#0f172a);
+    }
+
+    .hero h1{
+      font-size:65px;
+      margin-bottom:10px;
+      background:linear-gradient(to right,#38bdf8,#818cf8);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      font-size:22px;
+      color:#cbd5e1;
+      max-width:800px;
+      line-height:1.6;
+    }
+
+    .hero-buttons{
+      margin-top:30px;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:15px;
+      transition:0.3s;
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    .primary{
+      background:#38bdf8;
+      color:black;
+    }
+
+    .primary:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 20px #38bdf8;
+    }
+
+    .secondary{
+      background:#1e293b;
+      color:white;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .secondary:hover{
+      background:#334155;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:40px;
+      color:#38bdf8;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+    }
+
+    /* ABOUT */
+
+    .about-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .about-card{
+      background:#0f172a;
+      padding:35px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.4s;
+    }
+
+    .about-card:hover{
+      transform:translateY(-8px);
+      border-color:#38bdf8;
+    }
+
+    .about-card h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    .about-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    /* PROJECTS */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:#0f172a;
+      border-radius:20px;
+      padding:30px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+      border-color:#38bdf8;
+      box-shadow:0 0 30px rgba(56,189,248,0.2);
+    }
+
+    .project-card h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    .project-card p{
+      color:#cbd5e1;
+      line-height:1.7;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+      justify-content:center;
+    }
+
+    .skill{
+      background:#1e293b;
+      padding:12px 22px;
+      border-radius:50px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .skill:hover{
+      background:#38bdf8;
+      color:black;
+      transform:scale(1.08);
+    }
+
+    /* CONTACT */
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact p{
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#0f172a;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ANIMATION */
+
+    .fade{
+      opacity:0;
+      transform:translateY(40px);
+      transition:1s;
+    }
+
+    .fade.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        gap:15px;
+      }
+
+    }
+
   </style>
 </head>
-<body><header>
-  <h1>Sri Chaithanya</h1>
-  <p>AI | Real-Time Systems | Cloud Developer</p>
-</header><section>
-  <h2>About Me</h2>
-  <p>I build AI-powered real-time systems using Python and Google Cloud.</p>
-</section><section>
-  <h2>Projects</h2>
-  <div class="card">
-    <h3>MindWatch AI</h3>
-    <p>Real-time stress detection system using Gemini API.</p>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <h2>Sri Chaithanya</h2>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <div class="hero">
+
+    <h1>AI & IoT Developer</h1>
+
+    <p>
+      Building intelligent real-time systems using AI, Python,
+      Embedded Systems, APIs, and Cloud Technologies.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#projects" class="btn primary">View Projects</a>
+
+      <a href="mailto:srichaithanyaerukulla@gmail.com" class="btn secondary">
+        Contact Me
+      </a>
+    </div>
+
   </div>
-  <div class="card">
-    <h3>Smart Venue AI</h3>
-    <p>Automation-based intelligent venue system.</p>
-  </div>
-</section><section>
-  <h2>Skills</h2>
-  <p>Python, Google Cloud, AI, APIs</p>
-</section><section>
-  <h2>Contact</h2>
-  <button onclick="contact()">Contact Me</button>
-</section><script>
-function contact(){
-  alert("Email: your-srichaithanyaerukulla@gmail.com");
-}
-</script></body>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>Passionate about intelligent systems and AI engineering</p>
+    </div>
+
+    <div class="about-container">
+
+      <div class="about-card fade">
+        <h3>Who Am I?</h3>
+
+        <p>
+          I am an Electronics and Communication Engineering student
+          passionate about Artificial Intelligence, Real-Time Systems,
+          Embedded Technologies, and Automation.
+        </p>
+      </div>
+
+      <div class="about-card fade">
+        <h3>What I Build</h3>
+
+        <p>
+          I develop intelligent monitoring systems, AI assistants,
+          IoT-based applications, and automation workflows focused on
+          solving real-world problems.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="section-title">
+      <h2>Projects</h2>
+      <p>Highlighted AI & Real-Time System Projects</p>
+    </div>
+
+    <div class="projects">
+
+      <div class="project-card fade">
+        <h3>MindWatch AI</h3>
+
+        <p>
+          AI-powered real-time stress monitoring and intelligent
+          response system with contextual interaction workflows.
+        </p>
+      </div>
+
+      <div class="project-card fade">
+        <h3>AI Gym Assistant</h3>
+
+        <p>
+          AI-based workout guidance assistant designed for
+          intelligent user interaction and fitness support.
+        </p>
+      </div>
+
+      <div class="project-card fade">
+        <h3>Smart Accident Detection</h3>
+
+        <p>
+          IoT-based accident detection and emergency alert system
+          designed for real-time safety monitoring.
+        </p>
+      </div>
+
+      <div class="project-card fade">
+        <h3>Industrial Fault Detection</h3>
+
+        <p>
+          Real-time industrial monitoring system using sensors
+          and preventive alert mechanisms.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="section-title">
+      <h2>Skills</h2>
+      <p>Technologies and tools I work with</p>
+    </div>
+
+    <div class="skills">
+
+      <div class="skill">Python</div>
+      <div class="skill">AI</div>
+      <div class="skill">Prompt Engineering</div>
+      <div class="skill">REST APIs</div>
+      <div class="skill">JSON</div>
+      <div class="skill">Google Cloud</div>
+      <div class="skill">Arduino</div>
+      <div class="skill">Embedded Systems</div>
+      <div class="skill">Git & GitHub</div>
+      <div class="skill">MATLAB</div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="section-title">
+      <h2>Contact</h2>
+      <p>Let’s connect and build something impactful</p>
+    </div>
+
+    <div class="contact">
+
+      <p>Email: srichaithanyaerukulla@gmail.com</p>
+
+      <div class="hero-buttons">
+
+        <a 
+          href="mailto:srichaithanyaerukulla@gmail.com"
+          class="btn primary"
+        >
+          Send Email
+        </a>
+
+        <a
+          href="https://github.com/srichaithanyaerukulla-ctrl"
+          target="_blank"
+          class="btn secondary"
+        >
+          GitHub
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Sri Chaithanya | AI & Real-Time Systems Portfolio
+  </footer>
+
+  <script>
+
+    const fadeElements = document.querySelectorAll('.fade');
+
+    window.addEventListener('scroll', () => {
+
+      fadeElements.forEach(el => {
+
+        const top = el.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+          el.classList.add('show');
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
 </html>
